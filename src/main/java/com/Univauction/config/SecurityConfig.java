@@ -15,6 +15,9 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // REST면 보통 비활성화
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/wallets/{userId}/enroll").permitAll()
+                        .requestMatchers("/ideas-with-auction").permitAll()
+                        .requestMatchers("/auctions").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();

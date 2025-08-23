@@ -2,6 +2,9 @@ package com.Univauction.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "bids")
@@ -25,4 +28,8 @@ public class Bid {
     private Double bidAmount;
 
     private String status; // ACTIVE / CANCELED
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 }

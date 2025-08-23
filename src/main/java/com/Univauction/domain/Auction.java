@@ -32,4 +32,8 @@ public class Auction {
     private LocalDateTime endDate; // D-day, 남은 시간 계산 필요
 
     private String status; // OPEN or CLOSED
+
+    private String licenseType;   // "EXCLUSIVE" or "NON_EXCLUSIVE"
+
+    private Double reservePrice;  // 리저브 가격
 }

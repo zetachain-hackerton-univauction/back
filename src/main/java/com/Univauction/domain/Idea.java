@@ -26,4 +26,19 @@ public class Idea {
     private String category;
 
     private String tags;
+
+    @Column(columnDefinition = "TEXT")
+    private String problemStatement;
+
+    @Column(columnDefinition = "TEXT")
+    private String solutionOverview;
+
+    @Column(columnDefinition = "TEXT")
+    private String marketOpportunity;
+
+    @Column(columnDefinition = "TEXT")
+    private String competitiveAdvantage;
+
+    @Column(columnDefinition = "TEXT")
+    private String filesUrl;
 }
