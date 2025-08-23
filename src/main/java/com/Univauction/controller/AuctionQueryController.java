@@ -1,8 +1,10 @@
 package com.Univauction.controller;
 
 import com.Univauction.dto.AuctionCardResponse;
+import com.Univauction.dto.AuctionDetailResponse;
 import com.Univauction.dto.AuctionSort;
 import com.Univauction.dto.BidResponse;
+import com.Univauction.service.AuctionDetailService;
 import com.Univauction.service.AuctionQueryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,9 +19,11 @@ import java.util.List;
 public class AuctionQueryController {
 
     private final AuctionQueryService auctionQueryService;
+    private final AuctionDetailService auctionDetailService;
 
-    public AuctionQueryController(AuctionQueryService auctionQueryService) {
+    public AuctionQueryController(AuctionQueryService auctionQueryService, AuctionDetailService auctionDetailService) {
         this.auctionQueryService = auctionQueryService;
+        this.auctionDetailService = auctionDetailService;
     }
 
     // 전체 활성화된 옥션 목록 조회
@@ -50,5 +54,10 @@ public class AuctionQueryController {
             @RequestParam(defaultValue = "latest") String sort
     ) {
         return auctionQueryService.getBids(auctionId, sort);
+    }
+
+    @GetMapping("/{auctionId}")
+    public AuctionDetailResponse getAuctionDetail(@PathVariable Integer auctionId) {
+        return auctionDetailService.getDetail(auctionId);
     }
 }

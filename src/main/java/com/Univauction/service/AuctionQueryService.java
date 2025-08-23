@@ -69,8 +69,11 @@ public class AuctionQueryService {
                     .map(b -> new BidResponse(
                             b.getBidId(),
                             b.getUser().getUserId(),
+                            b.getBidderWalletAddress(),
+                            b.getTokenSymbol(),
                             b.getBidAmount(),
-                            b.getStatus(),
+                            b.getComment(),
+                            b.getBidToken(),
                             b.getCreatedAt()))
                     .toList();
             case "latest" -> bidRepository.findByAuctionOrderByCreatedAtDesc(auction)
@@ -78,9 +81,13 @@ public class AuctionQueryService {
                     .map(b -> new BidResponse(
                             b.getBidId(),
                             b.getUser().getUserId(),
+                            b.getBidderWalletAddress(),
+                            b.getTokenSymbol(),
                             b.getBidAmount(),
-                            b.getStatus(),
-                            b.getCreatedAt()))
+                            b.getComment(),
+                            b.getBidToken(),
+                            b.getCreatedAt()
+                    ))
                     .toList();
             default -> throw new IllegalArgumentException("Unsupported sort: " + sort);
         };
@@ -99,8 +106,11 @@ public class AuctionQueryService {
         return page.map(b -> new BidResponse(
                 b.getBidId(),
                 b.getUser().getUserId(),
+                b.getBidderWalletAddress(),
+                b.getTokenSymbol(),
                 b.getBidAmount(),
-                b.getStatus(),
+                b.getComment(),
+                b.getBidToken(),
                 b.getCreatedAt()
         ));
     }

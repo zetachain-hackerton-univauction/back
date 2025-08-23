@@ -4,7 +4,11 @@ import java.time.LocalDateTime;
 
 public record BidResponse(
         Integer bidId,
-        Integer userId,
+        Integer bidderUserId,
+        String bidderWalletAddress,
+        String tokenSymbol,
         Double bidAmount,
-        String status,
-        LocalDateTime createdAt) {}
+        String comment,
+        String bidToken,
+        LocalDateTime createdAt
+) {}

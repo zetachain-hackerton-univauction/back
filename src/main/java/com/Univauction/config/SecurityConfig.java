@@ -18,6 +18,9 @@ public class SecurityConfig {
                         .requestMatchers("/wallets/{userId}/enroll").permitAll()
                         .requestMatchers("/ideas-with-auction").permitAll()
                         .requestMatchers("/auctions").permitAll()
+                        .requestMatchers("/auctions/{auctionId}/bids").permitAll()
+                        .requestMatchers("/auctions/{auctionId}").permitAll()
+                        .requestMatchers("/auctions/bids/{auctionId}").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();
